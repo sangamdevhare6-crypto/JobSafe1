@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}JobSafe{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="noise"></div><div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="ambient ambient-c"></div>
+<header class="premium-header">
+  <a class="premium-brand" href="{% url 'home' %}"><span class="brand-mark">JS</span><span>JOB<span>SAFE</span></span></a>
+  {% if request.user.is_authenticated %}
+  <nav class="premium-nav">
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'check_job' %}">Job Scanner</a>
+    <a href="{% url 'company_check' %}">Company Intel</a>
+    <a href="{% url 'screenshot' %}">Evidence</a>
+    <a href="{% url 'scan_history' %}">History</a>
+    <a href="{% url 'analytics' %}">Analytics</a>
+    <a href="{% url 'threat_center' %}">Threat Center</a>
+    <a href="{% url 'scam_reports' %}">Reports</a>
+    <details class="more-menu"><summary>More</summary><div class="more-panel">
+      <a href="{% url 'safety_guide' %}">Safety Guide</a><a href="{% url 'resources' %}">Resources</a><a href="{% url 'activity' %}">Activity</a><a href="{% url 'notifications' %}">Notifications</a><a href="{% url 'profile' %}">Profile</a><a href="{% url 'settings' %}">Settings</a>
+      {% if request.user.is_staff %}<div class="more-divider"></div><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a><a href="{% url 'admin_users' %}">Admin Users</a><a href="{% url 'admin_jobs' %}">Admin Jobs</a><a href="{% url 'admin_companies' %}">Admin Companies</a><a href="{% url 'admin_reports' %}">Admin Reports</a><a href="{% url 'admin_analytics' %}">Admin Analytics</a><a href="{% url 'admin_threats' %}">Admin Threats</a><a href="{% url 'system_monitor' %}">System Monitor</a><a href="{% url 'admin_resources' %}">Admin Resources</a>{% endif %}
+    </div></details>
+  </nav>
+  <div class="premium-actions">
+    <a class="header-avatar" href="{% url 'profile' %}">{{ request.user.username|first|upper }}</a>
+    <a class="header-logout" href="{% url 'logout' %}">Logout</a>
+  </div>
+  {% else %}
+  <div class="premium-actions"><a class="header-login" href="{% url 'login' %}">Login</a><a class="header-cta" href="{% url 'signup' %}">Get Started</a></div>
+  {% endif %}
+</header>
+{% if messages %}<div class="toast-stack">{% for message in messages %}<div class="toast {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+<div class="mobile-nav">
+{% if request.user.is_authenticated %}
+<a href="{% url 'dashboard' %}">Dashboard</a><a href="{% url 'check_job' %}">Scan</a><a href="{% url 'company_check' %}">Company</a><a href="{% url 'scan_history' %}">History</a><a href="{% url 'profile' %}">Profile</a>
+{% endif %}
+</div>
+{% block content %}{% endblock %}
+<script src="{% static 'js/script.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

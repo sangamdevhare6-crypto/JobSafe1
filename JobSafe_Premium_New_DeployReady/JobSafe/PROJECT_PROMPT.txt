@@ -1,0 +1,83 @@
+Build a complete full-stack website called “JobSafe — Check Before You Apply”.
+
+Goal:
+Help students and job seekers verify jobs, internships, recruiters, companies and offer-letter screenshots before they become victims of scams.
+
+TECHNOLOGY:
+Frontend: HTML5 + CSS3 + JavaScript only. Do not use React.
+Backend: Python + Django.
+Database: SQLite3.
+Authentication: Django Authentication.
+Admin: Django superuser plus a custom JobSafe Admin Dashboard.
+
+DESIGN:
+Create a premium futuristic cybersecurity SaaS UI. Use dark navy/black backgrounds, cyan/electric-blue primary accents, purple secondary accents, green/orange/red risk states, glassmorphism, blur, glowing borders, smooth gradients and responsive layouts.
+Every dashboard/page must have polished micro-interactions: glowing cards, animated gradient borders, hover lift, subtle 3D tilt, active sidebar glow, animated counters, progress/risk animations, chart animations, button glow, alert pulse, page entrance transitions and smooth loading states. Keep it professional, not gaming/neon.
+
+USER FLOW:
+Landing/Home
+→ User Login
+→ Signup
+→ User Dashboard
+→ Check a Job
+→ Job Analysis Result
+→ Screenshot Scanner
+→ Screenshot Scan Result/preview
+→ Company Check
+→ Company Result
+→ Scam Reports
+→ Job Safety Guide
+→ Logout
+→ Login
+
+USER SIDEBAR MUST CONTAIN ONLY:
+Dashboard
+Check a Job
+Screenshot Scanner
+Company Check
+Scam Reports
+Job Safety Guide
+Logout
+
+Do NOT add Profile Settings, Help & Support or any other sidebar option.
+
+USER DASHBOARD:
+Show Total Checks, Safe Jobs, Suspicious Jobs, High Risk Jobs, Scam Reports, recent job checks, risk overview, risk trends and quick actions.
+
+JOB CHECK:
+Inputs: job title, company, URL, job description/recruiter message.
+Return a 0–100 risk score and SAFE / SUSPICIOUS / HIGH RISK with clear reasons.
+
+SCREENSHOT SCANNER:
+Image upload, preview, animated scanning UI and result area. Structure it so OCR and ML can be connected later.
+
+COMPANY CHECK:
+Company name, official website, recruiter email/domain. Show trust/risk score and verification status.
+
+SCAM REPORTS:
+Users can submit company, job title and description. Show their submitted reports.
+
+JOB SAFETY GUIDE:
+Cards explaining no-payment rule, official careers page verification, recruiter email checking, credential protection, urgency tactics and evidence preservation.
+
+ADMIN:
+Separate Admin Login.
+Custom Admin Dashboard with total users, job checks, scam reports, companies, activity chart and recent reports.
+Admin pages:
+- Users Management
+- Scam Reports
+- Companies
+- Django Admin link
+Admin sidebar should contain Dashboard, Users, Scam Reports, Companies, Logout.
+
+DATABASE MODELS:
+Profile/role
+JobCheck
+CompanyCheck
+ScamReport
+
+SECURITY:
+Use Django CSRF, password hashing and login decorators. Only staff users can access custom admin pages.
+
+OUTPUT:
+Return a complete runnable Django project with manage.py, requirements.txt, settings, urls, apps, models, views, forms, templates, static CSS/JS and README.
